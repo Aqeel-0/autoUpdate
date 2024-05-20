@@ -11,7 +11,7 @@ model = load('pipeline')
 MONGO_URI = "mongodb+srv://skoolai:Nikunj123@cluster0.ruworvb.mongodb.net/?retryWrites=true&w=majority"
 
 # Initialize Flask app
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)
 
 def connect_to_mongodb():
