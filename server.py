@@ -36,7 +36,8 @@ def connect_to_mongodb():
         print(client)
     except Exception as e:
         print("Error connecting to MongoDB:", e)
-
+connect_to_mongodb()  # Connect to MongoDB once at the start
+load_model()
 # Retrieve data from MongoDB
 def retrieve_data():
     if client:
@@ -139,6 +140,5 @@ def predict():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    connect_to_mongodb()  # Connect to MongoDB once at the start
-    load_model()  # Load the model once at the start
+      # Load the model once at the start
     app.run(host='0.0.0.0')
