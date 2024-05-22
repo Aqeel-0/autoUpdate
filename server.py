@@ -33,7 +33,7 @@ def connect_to_mongodb():
     try:
         client = MongoClient(MONGO_URI)
         print("Connected to MongoDB")
-        
+        print(client)
     except Exception as e:
         print("Error connecting to MongoDB:", e)
 
