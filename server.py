@@ -48,8 +48,8 @@ def retrieve_data():
             db = client.get_database("test")  # Replace 'your_database_name' with your actual database name
             print(db.list_collection_names())
             # Access the collection
-            collection = db.get_collection("mlstudents")
-
+            collection = db.get_collection("posts")
+            
             # Find all documents in the collection
             data = list(collection.find({}))
             print(data)
