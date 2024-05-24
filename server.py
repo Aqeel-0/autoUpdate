@@ -48,7 +48,7 @@ def retrieve_data():
             db = client.get_database("test")  # Replace 'your_database_name' with your actual database name
             print(db.list_collection_names())
             # Access the collection
-            collection = db.get_collection("posts")
+            collection = db.get_collection("mlstudents")
             
             # Find all documents in the collection
             data = list(collection.find({}))
@@ -69,23 +69,23 @@ def processing(data):
         if len(attendance_array) >= 5:
             last_5_attendance = attendance_array[-5:]
             accumulated_status = sum(entry['status'] for entry in last_5_attendance)
-            current_week_attendance = accumulated_status
+            
         else:
             accumulated_status = sum(entry['status'] for entry in attendance_array)
-            current_week_attendance = accumulated_status
+            
 
-        obj['currWeekAttendance'] = current_week_attendance
+        obj['currWeekAttendance'] = accumulated_status
         accumulated_status = 0
 
         if len(attendance_array) >= 30:
             last_30_attendance = attendance_array[-30:]
             accumulated_status = sum(entry['status'] for entry in last_30_attendance)
-            current_month_attendance = (accumulated_status / 30) * 100
+            accumulated_status = (accumulated_status / 30) * 100
         else:
             accumulated_status = sum(entry['status'] for entry in attendance_array)
-            current_month_attendance = (accumulated_status / len(attendance_array)) * 100
+            accumulated_status = (accumulated_status / len(attendance_array)) * 100
 
-        obj['currMonthAttendance'] = current_month_attendance * 100
+        obj['currMonthAttendance'] = accumulated_status
 
     return data
 
